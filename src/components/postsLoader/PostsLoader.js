@@ -14,3 +14,6 @@ export default function PostsLoader(props) {
 		</div>
 	);
 }
+
+// This is what make hooks so appealing: finally we have a nice, standardized,
+// and clean way for encapsulating and sharing logic.
