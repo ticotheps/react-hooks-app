@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import useFetch from './useFetch';
 
-export default function PostsLoader() {
-	const [posts, setPosts] = useState([]);
-
-	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/posts')
-			.then(response => response.json())
-			.then(posts => setPosts(posts));
-	}, []);
+export default function PostsLoader(props) {
+	const data = useFetch('https://jsonplaceholder.typicode.com/posts');
 
 	return (
 		<div>
 			<ul>
-				{posts.map(post => (
+				{data.map(post => (
 					<li key={post.id}>{post.title}</li>
 				))}
 			</ul>
