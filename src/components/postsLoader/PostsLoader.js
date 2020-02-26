@@ -1,29 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default class postsLoader extends Component {
-	state = {
-		posts: []
-	};
+export default function PostsLoader() {
+	const [posts, setPosts] = useState([]);
 
-	componentDidMount() {
+	useEffect(() => {
 		fetch('https://jsonplaceholder.typicode.com/posts')
 			.then(response => response.json())
-			.then(posts =>
-				this.setState(() => {
-					return { posts };
-				})
-			);
-	}
+			.then(posts => setPosts(posts));
+	}, []);
 
-	render() {
-		return (
-			<div>
-				<ul>
-					{this.state.posts.map(post => (
-						<li key={post.id}>{post.title}</li>
-					))}
-				</ul>
-			</div>
-		);
-	}
+	return (
+		<div>
+			<ul>
+				{posts.map(post => (
+					<li key={post.id}>{post.title}</li>
+				))}
+			</ul>
+		</div>
+	);
 }
