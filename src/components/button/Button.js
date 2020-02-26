@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 
 export default class Button extends Component {
-	constructor() {
-		super();
+	state = {
+		buttonText: 'Click me, please'
+	};
 
-		this.state = {
-			buttonText: 'Click me, please'
-		};
-
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick() {
+	handleClick = () => {
 		this.setState(() => {
 			return {
 				buttonText: 'Thanks, been clicked!'
 			};
 		});
-	}
+	};
 
 	render() {
 		const { buttonText } = this.state;
